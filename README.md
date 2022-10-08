@@ -1,5 +1,14 @@
 <h2> pywish API </h2>
+
 API for pywish social network via Django Rest Framework.<br>
+
+---
+
+<h3> Stack of technologies </h3>
+
+1) Python ≥ 3.10
+2) Django Rest Framework
+3) PostgreSQL
 
 ---
 
