@@ -1,5 +1,7 @@
 <h2> pywish API </h2>
-API for pywish social network.
+API for pywish social network via Django Rest Framework.<br>
+
+---
 
 <h3> Installation guide for Linux/GNU OS </h3>
 
