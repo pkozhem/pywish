@@ -18,7 +18,7 @@ class User(AbstractUser):
 
 
 class Profile(models.Model):
-    """ User's Profile model. Created automatically when new user is created. """
+    """ User's Profile model. Creates automatically when new user is created. """
 
     SEX = (('male', 'male'),
            ('female', 'female'))
@@ -31,7 +31,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
-        """ Overwritten save method. Makes slug and resize image. """
+        """ Overwritten save method. Makes slug and resizes image. """
 
         self.slug = slugify(self.user)
         super().save(*args, **kwargs)
