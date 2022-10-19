@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.utils.text import slugify
 from PIL import Image
 
 
@@ -11,7 +10,7 @@ class User(AbstractUser):
 
     class Meta:
         verbose_name = 'User'
-        verbose_name_plural = 'UserView'
+        verbose_name_plural = 'Users'
 
     def __str__(self):
         return f'{self.username}'
@@ -22,7 +21,6 @@ class Profile(models.Model):
 
     SEX = (('male', 'male'),
            ('female', 'female'))
-    slug = models.SlugField(default='', blank=True, unique=True)
     birthday = models.DateField(blank=True, null=True)
     sex = models.CharField(default='male', max_length=6, choices=SEX)
     image = models.ImageField(default='default.png', upload_to='avatars', blank=True, null=True)
@@ -33,7 +31,6 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         """ Overwritten save method. Makes slug and resizes image. """
 
-        self.slug = slugify(self.user)
         super().save(*args, **kwargs)
         resized_image = Image.open(self.image.path)
         if resized_image.height > 300 or resized_image.width > 300:

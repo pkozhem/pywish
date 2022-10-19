@@ -1,13 +1,13 @@
 from django.urls import path
-from src.wall.views import PostListAPIView, CommentAPIView, PostAPIView
+from src.wall.views import PostListAPIView, CommentAPIGenericViewSet, PostAPIGenericViewSet
 
 urlpatterns = [
-    path('<slug:slug>', PostListAPIView.as_view()),  # wall/user-slug  'user's wall'
-    path('post/create', PostAPIView.as_view({'post': 'create'})),  # wall/post/create  'create post'
-    path('post/<int:pk>', PostAPIView.as_view({'get': 'retrieve',  # wall/post/id  'actions with post'
-                                               'put': 'update',
-                                               'delete': 'destroy'})),
-    path('comment/create', CommentAPIView.as_view({'post': 'create'})),  # wall/comment/create  'create comment'
-    path('comment/<int:pk>', CommentAPIView.as_view({'put': 'update',    # wall/comment/id  'actions with comment'
-                                                     'delete': 'destroy'}))
+    path('<int:pk>', PostListAPIView.as_view()),                             # wall/user-id  'user's wall'
+    path('post/create', PostAPIGenericViewSet.as_view({'post': 'create'})),  # wall/post/create  'create post'
+    path('post/<int:pk>', PostAPIGenericViewSet.as_view({'get': 'retrieve',  # wall/post/post-id  'actions with post'
+                                                         'put': 'update',
+                                                         'delete': 'destroy'})),
+    path('comment/create', CommentAPIGenericViewSet.as_view({'post': 'create'})),  # wall/comment/create  'create'
+    path('comment/<int:pk>', CommentAPIGenericViewSet.as_view({'put': 'update',    # wall/comment/comment-id  'actions'
+                                                               'delete': 'destroy'}))
 ]

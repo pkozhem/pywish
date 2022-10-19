@@ -14,8 +14,8 @@ class UserAdmin(UserAdmin):
 class ProfileAdmin(admin.ModelAdmin):
     """ Configuring display list and search fields of Profile model in Admin panel. """
 
-    list_display = ('user', 'slug', 'image', 'status')
-    search_fields = ('user', 'slug')
+    list_display = ('user', 'image', 'status')
+    search_fields = ('user',)
 
 
 class WishAdmin(admin.ModelAdmin):

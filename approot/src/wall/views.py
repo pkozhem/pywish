@@ -1,11 +1,11 @@
 from rest_framework import permissions, generics
 from src.tools.permissions import IsOwnerOrAdmin
-from src.tools.views import CreateRetrieveUpdateDestroyView, CreateUpdateDestroyView
+from src.tools.views import CreateRetrieveUpdateDestroyGenericViewSet, CreateUpdateDestroyGenericViewSet
 from src.wall.models import Post, Comment
 from src.wall.serializers import CommentCreateSerializer, PostSerializer, PostListSerializer
 
 
-class PostAPIView(CreateRetrieveUpdateDestroyView):
+class PostAPIGenericViewSet(CreateRetrieveUpdateDestroyGenericViewSet):
     """ Post's CRUD. """
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -27,13 +27,12 @@ class PostListAPIView(generics.ListAPIView):
     """ List of Posts in User's wall. """
 
     def get_queryset(self):
-        slug = self.kwargs['slug']
-        return Post.objects.filter(user__profile__slug=slug).select_related('user').prefetch_related('comments')
+        return Post.objects.filter(user__id=self.kwargs['pk']).select_related('user').prefetch_related('comments')
 
     serializer_class = PostListSerializer
 
 
-class CommentAPIView(CreateUpdateDestroyView):
+class CommentAPIGenericViewSet(CreateUpdateDestroyGenericViewSet):
     """ Comment's CUD. """
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

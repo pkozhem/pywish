@@ -6,7 +6,7 @@ from src.tools.serializers import ProfileImageSerializer
 User = get_user_model()
 
 
-class UserFollowerSerializer(serializers.ModelSerializer):
+class UserForFollowerSerializer(serializers.ModelSerializer):
     """ Serializer for follower field in FollowerSerializer. """
 
     profile = ProfileImageSerializer(many=False, read_only=True, required=False)
@@ -15,14 +15,15 @@ class UserFollowerSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'id',
-            'username'
+            'username',
+            'profile'
         )
 
 
 class FollowerSerializer(serializers.ModelSerializer):
     """ Follower serializer. """
 
-    follower = UserFollowerSerializer(many=True, read_only=True)
+    follower = UserForFollowerSerializer(read_only=True)
 
     class Meta:
         model = Follower

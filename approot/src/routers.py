@@ -24,5 +24,5 @@ urlpatterns = [
 
     path('users/', include('src.users.urls')),
     path('wall/', include('src.wall.urls')),
-    # path('followers/', include('src.followers.urls'))
+    path('followers/', include('src.followers.urls'))
 ]
