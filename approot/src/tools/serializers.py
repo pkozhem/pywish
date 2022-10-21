@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from src.users.models import Profile
 
 
 class CommentParentListSerializer(serializers.ListSerializer):
@@ -16,13 +15,3 @@ class RecursiveChildrenSerializer(serializers.Serializer):
     def to_representation(self, value):
         serializer = self.parent.parent.__class__(value, context=self.context)
         return serializer.data
-
-
-class ProfileImageSerializer(serializers.ModelSerializer):
-    """ Profile image serializer. """
-
-    class Meta:
-        model = Profile
-        fields = (
-            'image',
-        )

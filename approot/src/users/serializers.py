@@ -28,6 +28,16 @@ class ProfileSerializer(serializers.ModelSerializer):
                   'bio')
 
 
+class ProfileImageSerializer(serializers.ModelSerializer):
+    """ Profile image serializer. """
+
+    class Meta:
+        model = Profile
+        fields = (
+            'image',
+        )
+
+
 class UserSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
     """ User serializer. """
 

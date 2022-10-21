@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from src.followers.models import Follower
-from src.tools.serializers import ProfileImageSerializer
+from src.users.serializers import ProfileImageSerializer
 
 User = get_user_model()
 
