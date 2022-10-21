@@ -28,6 +28,10 @@ class Profile(models.Model):
     bio = models.CharField(default='', blank=True, null=True, max_length=255)
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'Profile'
+        verbose_name_plural = 'Profiles'
+
     def save(self, *args, **kwargs):
         """ Overwritten save method. Makes slug and resizes image. """
 
@@ -36,10 +40,6 @@ class Profile(models.Model):
         if resized_image.height > 300 or resized_image.width > 300:
             resized_image.thumbnail((300, 300))
             resized_image.save(self.image.path)
-
-    class Meta:
-        verbose_name = 'Profile'
-        verbose_name_plural = 'Profiles'
 
     def __str__(self):
         return f'{self.user}'

@@ -10,20 +10,18 @@ User = get_user_model()
 class UserPrivateAPIView(ModelViewSet):
     """ Private User View. """
 
-    def get_queryset(self):
-        return User.objects.filter(id=self.kwargs['pk']).all()
-
     permission_classes = [IsAuthenticatedOrReadOnly, IsUserOrAdmin]
-    queryset = get_queryset
     serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return User.objects.filter(id=self.kwargs['pk'])
 
 
 class UserPublicAPIView(ModelViewSet):
     """ Public User View. """
 
-    def get_queryset(self):
-        return User.objects.filter(id=self.kwargs['pk']).all()
-
     permission_classes = [AllowAny]
-    queryset = get_queryset
     serializer_class = UserPublicSerializer
+
+    def get_queryset(self):
+        return User.objects.filter(id=self.kwargs['pk'])

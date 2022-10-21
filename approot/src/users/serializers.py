@@ -36,9 +36,7 @@ class UserSerializer(WritableNestedModelSerializer, serializers.ModelSerializer)
 
     class Meta:
         model = User
-        exclude = ("password",
-                   "email",
-                   "last_login",
+        exclude = ("last_login",
                    "is_active",
                    "is_staff",
                    "is_superuser")
@@ -52,7 +50,9 @@ class UserPublicSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        exclude = ("last_login",
+        exclude = ("password",
+                   "email",
+                   "last_login",
                    "is_active",
                    "is_staff",
                    "is_superuser")

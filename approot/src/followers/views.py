@@ -13,12 +13,11 @@ User = get_user_model()
 class FollowerListAPIView(ListAPIView):
     """ View allows to show User's followers. """
 
-    def get_queryset(self):
-        return Follower.objects.filter(user=self.kwargs['pk']).all()
-
     permission_classes = [AllowAny]
-    queryset = get_queryset
     serializer_class = FollowerSerializer
+
+    def get_queryset(self):
+        return Follower.objects.filter(user=self.kwargs['pk'])
 
 
 class FollowerAPIView(APIView):

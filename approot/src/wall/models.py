@@ -16,12 +16,12 @@ class Post(models.Model):
     views_amount = models.PositiveIntegerField(default=0, null=False)
     user = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
 
-    def comments_amount(self):
-        return self.comments.count()
-
     class Meta:
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
+
+    def comments_amount(self):
+        return self.comments.count()
 
     def __str__(self):
         return f'{self.text}'

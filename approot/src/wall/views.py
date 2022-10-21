@@ -9,8 +9,10 @@ class PostAPIGenericViewSet(CreateRetrieveUpdateDestroyGenericViewSet):
     """ Post's CRUD. """
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Post.objects.all().select_related('user').prefetch_related('comments')
     serializer_class = PostSerializer
+
+    def get_queryset(self):
+        return Post.objects.all().select_related('user').prefetch_related('comments')
 
     def get_permissions(self):
         if self.action in ('update', 'destroy'):
@@ -26,18 +28,20 @@ class PostAPIGenericViewSet(CreateRetrieveUpdateDestroyGenericViewSet):
 class PostListAPIView(generics.ListAPIView):
     """ List of Posts in User's wall. """
 
+    serializer_class = PostListSerializer
+
     def get_queryset(self):
         return Post.objects.filter(user__id=self.kwargs['pk']).select_related('user').prefetch_related('comments')
-
-    serializer_class = PostListSerializer
 
 
 class CommentAPIGenericViewSet(CreateUpdateDestroyGenericViewSet):
     """ Comment's CUD. """
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Comment.objects.all()
     serializer_class = CommentCreateSerializer
+
+    def get_queryset(self):
+        return Comment.objects.all()
 
     def get_permissions(self):
         if self.action in ('update', 'destroy'):
@@ -47,6 +51,6 @@ class CommentAPIGenericViewSet(CreateUpdateDestroyGenericViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    def perform_destroy(self, instance):
-        instance.published_cond = False
-        instance.save()
+    # def perform_destroy(self, instance):
+    #     instance.published_cond = False
+    #     instance.save()
