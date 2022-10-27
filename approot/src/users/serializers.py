@@ -42,7 +42,7 @@ class UserSerializer(WritableNestedModelSerializer, serializers.ModelSerializer)
     """ User serializer. """
 
     profile = ProfileSerializer(many=False, required=False)
-    wishes = WishSerializer(many=True, required=False)
+    wishes = WishSerializer(many=True, required=False, read_only=True)
 
     class Meta:
         model = User

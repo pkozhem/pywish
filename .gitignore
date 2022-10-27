@@ -12,6 +12,7 @@ xyz/*
 approot/src/users/media/default.png
 approot/src/users/media/avatars/*
 approot/config/static
+tasks
 
 # Distribution / packaging
 .Python

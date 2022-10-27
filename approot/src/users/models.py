@@ -33,7 +33,7 @@ class Profile(models.Model):
         verbose_name_plural = 'Profiles'
 
     def save(self, *args, **kwargs):
-        """ Overwritten save method. Makes slug and resizes image. """
+        """ Overwritten save method that resizes image. """
 
         super().save(*args, **kwargs)
         resized_image = Image.open(self.image.path)
