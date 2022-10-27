@@ -8,9 +8,11 @@ class CommentCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('post',
-                  'text',
-                  'parent')
+        fields = (
+            'post',
+            'text',
+            'parent'
+        )
 
 
 class CommentListSerializer(serializers.ModelSerializer):
@@ -28,14 +30,16 @@ class CommentListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         list_serializer_class = CommentParentListSerializer
-        fields = ('id',
-                  'post',
-                  'user',
-                  'text',
-                  'date_created',
-                  'date_updated',
-                  'published_cond',
-                  'children')
+        fields = (
+            'id',
+            'post',
+            'user',
+            'text',
+            'date_created',
+            'date_updated',
+            'published_cond',
+            'children'
+        )
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -47,13 +51,15 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('id',
-                  'user',
-                  'text',
-                  'date_created',
-                  'date_updated',
-                  'views_amount',
-                  'comments')
+        fields = (
+            'id',
+            'user',
+            'text',
+            'date_created',
+            'date_updated',
+            'views_amount',
+            'comments'
+        )
 
 
 class PostListSerializer(serializers.ModelSerializer):
@@ -64,12 +70,14 @@ class PostListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('id',
-                  'user',
-                  'text',
-                  'date_created',
-                  'date_updated',
-                  'views_amount',
-                  'comments_amount',
-                  'published_cond',
-                  'comments')
+        fields = (
+            'id',
+            'user',
+            'text',
+            'date_created',
+            'date_updated',
+            'views_amount',
+            'comments_amount',
+            'published_cond',
+            'comments'
+        )

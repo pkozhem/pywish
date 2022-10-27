@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'mptt',
 
     'src.users',
+    'src.wishes',
     'src.wall',
     'src.followers',
     'src.feed',
