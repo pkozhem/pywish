@@ -1,18 +1,10 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from drf_writable_nested import WritableNestedModelSerializer
-from src.users.models import Profile, Wish
+from src.users.models import Profile
+from src.wishes.serializers import WishSerializer
 
 User = get_user_model()
-
-
-class WishSerializer(serializers.ModelSerializer):
-    """ Wish model serializer. """
-
-    class Meta:
-        model = Wish
-        fields = ('id',
-                  'wish_name')
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -20,12 +12,14 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('id',
-                  'birthday',
-                  'sex',
-                  'image',
-                  'status',
-                  'bio')
+        fields = (
+            'id',
+            'birthday',
+            'sex',
+            'image',
+            'status',
+            'bio'
+        )
 
 
 class ProfileImageSerializer(serializers.ModelSerializer):
@@ -38,7 +32,7 @@ class ProfileImageSerializer(serializers.ModelSerializer):
         )
 
 
-class UserSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
+class UserPrivateSerializer(WritableNestedModelSerializer, serializers.ModelSerializer):
     """ User serializer. """
 
     profile = ProfileSerializer(many=False, required=False)
@@ -46,10 +40,12 @@ class UserSerializer(WritableNestedModelSerializer, serializers.ModelSerializer)
 
     class Meta:
         model = User
-        exclude = ("last_login",
-                   "is_active",
-                   "is_staff",
-                   "is_superuser")
+        exclude = (
+            "last_login",
+            "is_active",
+            "is_staff",
+            "is_superuser"
+        )
 
 
 class UserPublicSerializer(serializers.ModelSerializer):
@@ -60,9 +56,11 @@ class UserPublicSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        exclude = ("password",
-                   "email",
-                   "last_login",
-                   "is_active",
-                   "is_staff",
-                   "is_superuser")
+        exclude = (
+            "password",
+            "email",
+            "last_login",
+            "is_active",
+            "is_staff",
+            "is_superuser"
+        )

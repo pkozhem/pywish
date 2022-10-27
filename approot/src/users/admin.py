@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
-from src.users.models import Profile, Wish
+from src.users.models import Profile
 
 User = get_user_model()
 
@@ -18,12 +18,4 @@ class ProfileAdmin(admin.ModelAdmin):
     search_fields = ('user',)
 
 
-class WishAdmin(admin.ModelAdmin):
-    """ Configuring display list and search fields of Wish model in Admin panel. """
-
-    list_display = ('wish_name', 'user')
-    search_fields = ('wish_name', 'user')
-
-
 admin.site.register(Profile, ProfileAdmin)
-admin.site.register(Wish, WishAdmin)

@@ -13,7 +13,7 @@ class User(AbstractUser):
         verbose_name_plural = 'Users'
 
     def __str__(self):
-        return f'{self.username}'
+        return self.username
 
 
 class Profile(models.Model):
@@ -42,18 +42,4 @@ class Profile(models.Model):
             resized_image.save(self.image.path)
 
     def __str__(self):
-        return f'{self.user}'
-
-
-class Wish(models.Model):
-    """ User's wishes model. """
-
-    wish_name = models.CharField(blank=True, null=True, max_length=250)
-    user = models.ForeignKey(User, related_name='wishes', on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'Wish'
-        verbose_name_plural = 'Wishes'
-
-    def __str__(self):
-        return f'{self.wish_name} by {self.user}'
+        return self.user
