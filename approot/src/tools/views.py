@@ -24,3 +24,11 @@ class CreateUpdateDestroyGenericViewSet(GenericViewSet,
     """ CUD Generic View Set base. """
 
     pass
+
+
+class RetrieveUpdateGenericViewSet(GenericViewSet,
+                                   RetrieveModelMixin,
+                                   UpdateModelMixin):
+    """ RU Generic View Set base. """
+
+    pass

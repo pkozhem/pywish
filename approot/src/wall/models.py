@@ -24,7 +24,7 @@ class Post(models.Model):
         return self.comments.count()
 
     def __str__(self):
-        return f'{self.text}'
+        return self.text
 
 
 class Comment(MPTTModel, models.Model):
@@ -43,4 +43,4 @@ class Comment(MPTTModel, models.Model):
         verbose_name_plural = 'Comments'
 
     def __str__(self):
-        return '{} by {}'.format(self.post, self.user)
+        return self.text

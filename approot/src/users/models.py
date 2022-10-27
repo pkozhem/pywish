@@ -19,8 +19,10 @@ class User(AbstractUser):
 class Profile(models.Model):
     """ User's Profile model. Creates automatically when new user is created. """
 
-    SEX = (('male', 'male'),
-           ('female', 'female'))
+    SEX = (
+        ('male', 'male'),
+        ('female', 'female')
+    )
     birthday = models.DateField(blank=True, null=True)
     sex = models.CharField(default='male', max_length=6, choices=SEX)
     image = models.ImageField(default='default.png', upload_to='avatars', blank=True, null=True)
