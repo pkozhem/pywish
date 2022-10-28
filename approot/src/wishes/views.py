@@ -2,8 +2,8 @@ from django.contrib.auth import get_user_model
 from rest_framework.permissions import AllowAny
 from src.wishes.models import Wish
 from src.wishes.serializers import WishSerializer
-from src.tools.views import RetrieveUpdateGenericViewSet
-from src.tools.permissions import IsOwnerOrAdmin
+from src.core.views import RetrieveUpdateGenericViewSet
+from src.core.permissions import IsOwnerOrAdmin
 
 User = get_user_model()
 

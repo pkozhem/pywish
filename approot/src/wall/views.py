@@ -1,6 +1,6 @@
 from rest_framework import permissions, generics
-from src.tools.permissions import IsOwnerOrAdmin
-from src.tools.views import CreateRetrieveUpdateDestroyGenericViewSet, CreateUpdateDestroyGenericViewSet
+from src.core.permissions import IsOwnerOrAdmin
+from src.core.views import CreateRetrieveUpdateDestroyGenericViewSet, CreateUpdateDestroyGenericViewSet
 from src.wall.models import Post, Comment
 from src.wall.serializers import CommentCreateSerializer, PostSerializer, PostListSerializer
 

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from src.wall.models import Post, Comment
-from src.tools.serializers import RecursiveChildrenSerializer, CommentParentListSerializer
+from src.core.serializers import RecursiveChildrenSerializer, CommentParentListSerializer
 
 
 class CommentCreateSerializer(serializers.ModelSerializer):

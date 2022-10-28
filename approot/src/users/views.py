@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.viewsets import ModelViewSet
 from src.users.serializers import UserPrivateSerializer, UserPublicSerializer
-from src.tools.permissions import IsUserOrAdmin
+from src.core.permissions import IsUserOrAdmin
 
 User = get_user_model()
 
