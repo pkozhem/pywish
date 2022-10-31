@@ -6,7 +6,7 @@ from src.wall.serializers import CommentCreateSerializer, PostSerializer, PostLi
 
 
 class PostAPIGenericViewSet(CreateRetrieveUpdateDestroyGenericViewSet):
-    """ Post's CRUD. """
+    """ Controller for Post's CRUD. """
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = PostSerializer
@@ -26,7 +26,7 @@ class PostAPIGenericViewSet(CreateRetrieveUpdateDestroyGenericViewSet):
 
 
 class PostListAPIView(generics.ListAPIView):
-    """ List of Posts in User's wall. """
+    """ Controller to show list of Posts on User's wall. """
 
     serializer_class = PostListSerializer
 
@@ -35,7 +35,7 @@ class PostListAPIView(generics.ListAPIView):
 
 
 class CommentAPIGenericViewSet(CreateUpdateDestroyGenericViewSet):
-    """ Comment's CUD. """
+    """ Controller for Comment's CUD. """
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = CommentCreateSerializer

@@ -8,7 +8,7 @@ User = get_user_model()
 
 
 class UserPrivateAPIView(ModelViewSet):
-    """ Private User View. """
+    """ Private User Controller. """
 
     permission_classes = [IsAuthenticatedOrReadOnly, IsUserOrAdmin]
     serializer_class = UserPrivateSerializer
@@ -18,7 +18,7 @@ class UserPrivateAPIView(ModelViewSet):
 
 
 class UserPublicAPIView(ModelViewSet):
-    """ Public User View. """
+    """ Public User Controller. """
 
     permission_classes = [AllowAny]
     serializer_class = UserPublicSerializer

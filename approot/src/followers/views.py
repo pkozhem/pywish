@@ -11,7 +11,7 @@ User = get_user_model()
 
 
 class FollowerListAPIView(ListAPIView):
-    """ View allows to show User's followers. """
+    """ Controller to show User's followers. """
 
     permission_classes = [AllowAny]
     serializer_class = FollowerSerializer
@@ -21,7 +21,7 @@ class FollowerListAPIView(ListAPIView):
 
 
 class FollowerAPIView(APIView):
-    """ Create and destroy Follower (follow and unfollow) API View. """
+    """ Controller to create and destroy Follower (follow and unfollow). """
     # REMINDER NOTE: Delete attr data later
 
     permission_classes = [IsAuthenticated]

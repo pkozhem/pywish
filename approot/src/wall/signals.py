@@ -6,7 +6,7 @@ from src.wall.models import Post
 
 @receiver(post_save, sender=Wish)
 def create_post_by_wish_update(sender, instance, **kwargs):
-    """ Function which saves modified data. """
+    """ Auto create Post when Wish is updated and announce field is True. """
 
     if instance.announce:
         Post.objects.create(

@@ -9,7 +9,7 @@ User = get_user_model()
 
 @receiver(post_save, sender=User)
 def create_profile_and_wish(sender, instance, created, **kwargs):
-    """ Function which creates User's Profile. """
+    """ Auto create Profile and Wish when User is created. """
 
     if created:
         Profile.objects.create(user=instance)
@@ -18,6 +18,6 @@ def create_profile_and_wish(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def create_profile_and_wish(sender, instance, **kwargs):
-    """ Function which saves modified data. """
+    """ Saves incoming data for Profile instantly . """
 
     instance.profile.save()

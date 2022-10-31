@@ -9,6 +9,8 @@ User = get_user_model()
 
 
 class WishAPIView(RetrieveUpdateGenericViewSet):
+    """ Controller to retrieve and update Wish. """
+
     permission_classes = [AllowAny]
     serializer_class = WishSerializer
 
