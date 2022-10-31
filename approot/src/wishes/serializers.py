@@ -12,5 +12,6 @@ class WishSerializer(serializers.ModelSerializer):
         model = Wish
         fields = (
             'id',
-            'wish_name'
+            'wish_name',
+            'announce'
         )
