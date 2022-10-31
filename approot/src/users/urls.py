@@ -1,5 +1,6 @@
 from django.urls import path
 from src.users.views import UserPrivateAPIView, UserPublicAPIView
+from src.wall.views import PostListAPIView
 from src.wishes.views import WishAPIView
 
 urlpatterns = [
@@ -15,5 +16,7 @@ urlpatterns = [
     path('<int:pk>/wishes', WishAPIView.as_view({
             'get': 'retrieve',
             'put': 'update'
-        }))
+        })),
+
+    path('<int:pk>/wall', PostListAPIView.as_view())
 ]

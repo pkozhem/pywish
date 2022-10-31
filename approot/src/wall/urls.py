@@ -1,8 +1,7 @@
 from django.urls import path
-from src.wall.views import PostListAPIView, CommentAPIGenericViewSet, PostAPIGenericViewSet
+from src.wall.views import CommentAPIGenericViewSet, PostAPIGenericViewSet
 
 urlpatterns = [
-    path('<int:pk>', PostListAPIView.as_view()),
     path('post/create', PostAPIGenericViewSet.as_view({
         'post': 'create'
     })),
