@@ -11,17 +11,17 @@ User = get_user_model()
 
 
 class FollowerListAPIView(ListAPIView):
-    """ Controller to show User's followers. """
+    """ Controller which shows User's followers. """
 
     permission_classes = [AllowAny]
     serializer_class = FollowerSerializer
 
     def get_queryset(self):
-        return Follower.objects.filter(user=self.kwargs['pk'])
+        return Follower.objects.filter(user=self.kwargs['pk']).select_related('follower')
 
 
 class FollowerAPIView(APIView):
-    """ Controller to create and destroy Follower (follow and unfollow). """
+    """ Controller which creates and destroys Follower (follow and unfollow). """
     # REMINDER NOTE: Delete attr data later
 
     permission_classes = [IsAuthenticated]

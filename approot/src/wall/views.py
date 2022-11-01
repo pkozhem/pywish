@@ -26,7 +26,7 @@ class PostAPIGenericViewSet(CreateRetrieveUpdateDestroyGenericViewSet):
 
 
 class PostListAPIView(generics.ListAPIView):
-    """ Controller to show list of Posts on User's wall. """
+    """ Controller which shows list of Posts on User's wall. """
 
     serializer_class = PostListSerializer
 

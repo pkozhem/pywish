@@ -14,7 +14,7 @@ class UserPrivateAPIView(ModelViewSet):
     serializer_class = UserPrivateSerializer
 
     def get_queryset(self):
-        return User.objects.filter(id=self.kwargs['pk'])
+        return User.objects.filter(id=self.kwargs['pk']).select_related('profile').prefetch_related('wishes')
 
 
 class UserPublicAPIView(ModelViewSet):
@@ -24,4 +24,4 @@ class UserPublicAPIView(ModelViewSet):
     serializer_class = UserPublicSerializer
 
     def get_queryset(self):
-        return User.objects.filter(id=self.kwargs['pk'])
+        return User.objects.filter(id=self.kwargs['pk']).select_related('profile').prefetch_related('wishes')

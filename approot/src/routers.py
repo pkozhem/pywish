@@ -24,6 +24,6 @@ urlpatterns = [
 
     path('users/', include('src.users.urls')),
     path('wall/', include('src.wall.urls')),
-    path('followers/', include('src.followers.urls')),
-    # path('feed/', include('src.feed.urls'))
+    path('follow/', include('src.followers.urls')),  # followers app
+    path('feed/', include('src.feed.urls'))
 ]
